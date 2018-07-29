@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<link rel="stylesheet" href ="bootstrap.min.css" >
+		<title>投票页面</title>
+		<style type="text/css">		
+		</style>
+	</head> 
+	<body> 
+	<form action="tpcheck.php" method="post" target="_blank" id="myForm" ">
+		<!-- onsubmit="return checkForm() --><!-- onsubmit可以阻止action的提交 -->
+		<div class="jumbotron">
+		<div class="container">
+			<h1>投票</h1>
+			<p>每人每天最多投2票</p>
+		
+			<p>
+			<label class="radio-inline">
+				<input type="radio" name="RadioGroup" value="选项1" />选项1
+			</label>
+			
+			<label class="radio-inline">
+				<input type="radio" name="RadioGroup" value="选项2" />选项2
+			</label>
+				
+			<label class="radio-inline">
+				<input type="radio" name="RadioGroup" value="选项3" />选项3
+			</label>
+		
+			<div>
+				<input class="btn btn-default btn-lg" type="button" value="提交" id="submit1" onclick="mySubmit()" /> 
+			</div>
+		</p>
+		</div>	
+		</div>	 <!--type="submit"   -->
+	</form>
+	</body> 
+	<script type="text/javascript">
+	//function checkForm(){
+	//	if (!check_radio()) {
+	//		alert("请选择");
+	//		return false;//onsubmit处理函数返回false不会引起表单提交。
+	//	}else{
+	//		return true;
+			
+	//	}
+	//}
+	function mySubmit(){
+		if (!check_radio()) {
+			alert("您还未选择,请选择");
+		}else{
+			 document.getElementById("myForm").submit();
+		}
+	}
+	function check_radio(){ 
+		var ck = false;
+		var cks = document.getElementsByName("RadioGroup"); //返回带有指定名称的对象的集合。
+		for(var i=0;i<cks.length;i++){ 
+			if(cks[i].checked){ 
+				ck = true;
+				break;
+			} 
+		} 
+		return ck;
+	}
+	</script>
+</html>
