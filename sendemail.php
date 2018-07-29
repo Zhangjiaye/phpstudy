@@ -38,15 +38,15 @@ function sendEmail($user,$email,$token){
 					// 添加该邮件的主题
 					$mail->Subject = '用户帐号激活';
 					// 添加邮件正文
-					$mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
-				    <a href='http://localhost:8081/myphp/active.php?verify=".$token."' target= 
-				'_blank'>http://localhost:8081/myphp/active.php?verify=".$token."</a><br/> 
-				    如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
-				//     $mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
-				//     <a href='http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."' target= 
-				// '_blank'>http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."</a><br/> 
+				// 	$mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
+				//     <a href='http://localhost:8081/myphp/active.php?verify=".$token."' target= 
+				// '_blank'>http://localhost:8081/myphp/active.php?verify=".$token."</a><br/> 
 				//     如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
-					// // 为该邮件添加附件
+				    $mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
+				    <a href='http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."' target= 
+				'_blank'>http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."</a><br/> 
+				    如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
+					// 为该邮件添加附件
 					// $mail->addAttachment('./example.pdf');
 					// 发送邮件 返回状态
 					 $rs = $mail->send();

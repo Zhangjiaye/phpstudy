@@ -1,9 +1,9 @@
 <?php
 	header("Content-type:text/html;charset=utf-8");    //设置编码
 	ini_set('date.timezone','Asia/Shanghai'); //设置时区
-	$conn=mysqli_connect("localhost","root","root","userdb");// 创建连接	
 	mysqli_set_charset($conn,"utf8");
-	//$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+	//$conn=mysqli_connect("localhost","root","root","userdb");// 创建连接	
+	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
 	 // 检测连接
 	if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_error());
@@ -67,13 +67,13 @@
 			echo "<script>alert('投票成功');</script>";
 		}
 		else{
-			echo "<script>alert('您已经投了2次了');</script>";
+			echo "<script>alert('2天内您已经投了2次了');</script>";
 		}
 	}
 
 function chaxun($sql){
-	// $conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	$conn=mysqli_connect("localhost","root","root","userdb");
+	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+	//$conn=mysqli_connect("localhost","root","root","userdb");
 	if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_error());
 	}
@@ -90,8 +90,8 @@ function chaxun($sql){
 	
 function updatemtp(){
 	//往各个选项中存储票数
-	//$con=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	$conn=mysqli_connect("localhost","root","root","userdb");
+	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+	//$conn=mysqli_connect("localhost","root","root","userdb");
 	if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_error());
 	}
@@ -135,8 +135,8 @@ mysqli_close($conn);
 	</div>
 		<table class="table">
 			<?php
-				//$con=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-				$conn=mysqli_connect("localhost","root","root","userdb");
+				$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+				//$conn=mysqli_connect("localhost","root","root","userdb");
 				if (!$conn) {
 				    die("Connection failed: " . mysqli_connect_error());
 				}

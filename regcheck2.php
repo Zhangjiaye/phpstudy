@@ -18,8 +18,8 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 	else{
 		if ($pwd==$pwd_confirm) {
 
-			//$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-			$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
+			$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+			//$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
 			if (mysqli_connect_errno($conn)){
 	    		echo "数据库连接失败: " . mysqli_connect_error();
 	    		exit();
@@ -39,8 +39,8 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				$sql_insert="insert into user (username,userpwd,email,token,token_time,regtime) values('".$user."','".$pwd."','".$email."','".$token."','".$token_time."','".$regtime."')";
 				$res_insert=mysqli_query($conn,$sql_insert);
 				if($res_insert){
-					//echo "<script>alert('注册成功');window.location.href='login.php'</script>";
-					//数据库写入成功，要发邮件了
+					// echo "<script>alert('注册成功');window.location.href='login.php'</script>";
+					// 数据库写入成功，要发邮件了
 					// 引入PHPMailer的核心文件
 					require_once("PHPMailer/class.phpmailer.php");
 					require_once("PHPMailer/class.smtp.php");
@@ -78,14 +78,14 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 					// 添加该邮件的主题
 					$mail->Subject = '用户帐号激活';
 					// 添加邮件正文
-					$mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
-				    <a href='http://localhost:8081/myphp/active.php?verify=".$token."' target= 
-				'_blank'>http://localhost:8081/myphp/active.php?verify=".$token."</a><br/> 
-				    如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
-				//     $mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
-				//     <a href='http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."' target= 
-				// '_blank'>http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."</a><br/> 
+				// 	$mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
+				//     <a href='http://localhost:8081/myphp/active.php?verify=".$token."' target= 
+				// '_blank'>http://localhost:8081/myphp/active.php?verify=".$token."</a><br/> 
 				//     如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
+				    $mail->Body ="Welcome!".$user."：<br/>感谢您在我站注册了新帐号。<br/>请点击链接激活您的帐号。<br/> 
+				    <a href='http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."' target= 
+				'_blank'>http://ftp6241794.host714.zhujiwu.me/active.php?verify=".$token."</a><br/> 
+				    如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。"; 
 					// // 为该邮件添加附件
 					// $mail->addAttachment('./example.pdf');
 					// 发送邮件 返回状态
@@ -99,11 +99,12 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				        echo "发送失败";     
 				    } 
 				    			
+
 				}
 				else
 					echo "<script>alert('注册失败,请稍后尝试');history.go(-1);</script>";
 			}
-
+			mysqli_close($conn);
 		}
 		else{
 			echo "<script>alert('密码不一致');history.go(-1);</script>";

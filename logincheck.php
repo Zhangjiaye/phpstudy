@@ -15,8 +15,8 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		echo "<script>alert('验证码不正确');history.go(-1);</script>";
 	}//当用户名密码验证码不为空，则可以连接数据库//判断输入是否与数据库内的相同
 	else {
-		//$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-		$conn=mysqli_connect("localhost","root","root","userdb");
+		$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
+		//$conn=mysqli_connect("localhost","root","root","userdb");
 		if (mysqli_connect_errno($conn)){
 	    		echo "数据库连接失败: " . mysqli_connect_error();
 	    		exit();
@@ -52,6 +52,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 
 		}else
 			echo "<script>alert('用户名或者密码错误');history.go(-1);</script>";
+	mysqli_close($conn);
 	}
 }
 	else
