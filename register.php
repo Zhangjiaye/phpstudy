@@ -7,32 +7,45 @@
 	<link rel="stylesheet" href ="bootstrap.min.css" >
 	<script type="text/javascript">
 		function checkk(){
+
+				var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+    			var obj = document.getElementById("email"); //要验证的对象
+
+
 			if (myform.username.value=="") {
 				alert("请输入用户名");
 				myform.username.focus();
 				return false;
 			}
-			else if (myform.userpwd.value=="") {
+			if (myform.userpwd.value=="") {
 				alert("请输入密码");
 				myform.username.focus();
 				return false;
 			}
-			else if (myform.confirm.value=="") {
+			if (myform.confirm.value=="") {
 				alert("请再次输入密码");
 				myform.username.focus();
 				return false;
 			}
-			else if (myform.email.value=="") {
+			if (myform.email.value=="") {
 				alert("请输入邮箱");
 				myform.username.focus();
 				return false;
+			}else if(!reg.test(obj.value)){
+				alert('邮箱格式错误');
+				return false;
 			}
-			else if (myform.code.value=="") {
+			if (myform.code.value=="") {
 				alert("请输入验证码");
 				myform.username.focus();
 				return false;
 			}
+			
+
+
 		}
+
+
 	</script>
 	
 </head>
