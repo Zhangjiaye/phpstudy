@@ -17,7 +17,6 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 		}
 	else{
 		if ($pwd==$pwd_confirm) {
-
 			$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
 			//$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
 			if (mysqli_connect_errno($conn)){
@@ -34,7 +33,7 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				//
 				$regtime=time();//unix时间戳			
 				$token=md5($user.$pwd.$regtime);//创建用于激活码识别$token即构造好的激活识别码，它是由用户名、密码和当前时间组成并md5加密得来的。
-				$token_time=time()+60*60*24;//激活码有效期24小时内激活有效
+				$token_time=time()+60*60*24;
 				
 				$sql_insert="insert into user (username,userpwd,email,token,token_time,regtime) values('".$user."','".$pwd."','".$email."','".$token."','".$token_time."','".$regtime."')";
 				$res_insert=mysqli_query($conn,$sql_insert);

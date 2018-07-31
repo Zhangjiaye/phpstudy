@@ -1,8 +1,8 @@
 <?php
 //生成验证码背景
 header("Content-type:image/jpeg;");
-$width=60;
-$height=15;
+$width=80;
+$height=32;
 //创建画布，默认输出是黑色背景
 $img=imagecreatetruecolor($width, $height);
 //分配颜色

@@ -12,7 +12,7 @@
 	if($num){
 		$row = mysqli_fetch_array($r); 
 		include("sendemail.php");
-		if(sendEmail($row['username'],$row['email'],$row['token'])){
+		if(sendEmail($row['username'],$row['email'],$row['token'])){//邮件发送成功时，又到了邮箱的active页面，注册的时候有一个激活时间，更新
 			$t=time()+60*60*24;
 			$sql="update user set token_time='$t' where id='$id' ";
 			$r=mysqli_query($conn,$sql);

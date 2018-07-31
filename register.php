@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:margin-top="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>注册页面</title>
-	<link rel="stylesheet" href ="bootstrap.min.css" >
-	<script type="text/javascript">
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 整体背景 -->
+    <style type="text/css">
+        html{
+            height: 100%;
+        }
+        body{
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533045642754&di=857a645e8d5ac535ded332f8bcd23505&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2Fattachments2%2Fday_110730%2F110730052762634909e8fb37d2.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 100%;
+        }
+        input,img {vertical-align:middle;}
+        .col-center-block {
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20%;
+            text-align: center;
+            max-width: 333px;
+        }
+        .edit {
+            margin-top: 10px;
+        }
+        .textcolor{
+           color: white;
+        }
+
+    </style>
+    <script type="text/javascript">
 		function checkk(){
 
 				var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
@@ -19,89 +50,78 @@
 			}
 			if (myform.userpwd.value=="") {
 				alert("请输入密码");
-				myform.username.focus();
+				myform.userpwd.focus();
 				return false;
 			}
 			if (myform.confirm.value=="") {
 				alert("请再次输入密码");
-				myform.username.focus();
+				myform.confirm.focus();
 				return false;
 			}
 			if (myform.email.value=="") {
 				alert("请输入邮箱");
-				myform.username.focus();
+				myform.email.focus();
 				return false;
-			}else if(!reg.test(obj.value)){
+			}else if(!reg.test(obj.value)){//test() 方法用于检测一个字符串是否匹配某个模式.
 				alert('邮箱格式错误');
 				return false;
 			}
 			if (myform.code.value=="") {
 				alert("请输入验证码");
-				myform.username.focus();
+				myform.code.focus();
 				return false;
 			}
-			
-
-
 		}
-
-
 	</script>
-	
 </head>
 <body>
-<form class="form-horizontal" action="regcheck2.php" method="post" name="myform">
-<div class="container">
-		<div class="row">
-		<h1 class="col-md-4 col-md-offset-3">用户注册</h1>
-		</div>
-		<br>
-	<div class="form-group">
-		<label class="col-md-2 control-label">用户名</label> 
-		<div class="col-md-4">
-		<input class="form-control" type="text" name="username" id="username" placeholder="请输入用户名">
-		</div>
-	</div>
 
-	<div class="form-group">
-		<label class="col-md-2 control-label">密码</label> 
-		<div class="col-md-4">
-		<input class="form-control" type="password" name="userpwd" id="userpwd" placeholder="请输入密码">
-		</div>
-	</div>
+    <div class="container">
+        <div class="row row-centered">
+            <div class="col-xs-6 col-md-4 col-center-block">
+                <h1 class="textcolor">欢迎注册</h1>
+                <form action="regcheck2.php" method="post" name="myform">
 
-	<div class="form-group">
-		<label class="col-md-2 control-label">确认密码</label> 
-		<div class="col-md-4">
-		<input class="form-control" type="password" name="confirm" id="confirm" placeholder="请再输入一次密码">
-		</div>
-	</div>
 
-	<div class="form-group">
-		<label class="col-md-2 control-label">邮箱</label> 
-		<div class="col-md-4">
-		<input class="form-control" type="email" name="useremail" id="email" placeholder="请输入邮箱">
-		</div>
-	</div>
+                    <div class="input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon1">
+                            <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
+                    </div>
 
-	<div class="form-group">
-		<label class="col-md-2 control-label">验证码</label> 
-		<div class="col-md-4">
-			<input class="form-control" type="text" name="code" id="code" placeholder="请输入验证码">
-			<img title="看不清" src="img.php" onclick="this.src='img.php?'+Math.random()" style="cursor: pointer;">
-		</div>
-	</div>
-
-	<div class="row">
-		<br>
-		<br>
-		<button class="col-md-offset-2 btn btn-default" onclick="checkk()">立即注册</button>		
-	</div>
-	<div>
-		<input type="hidden" name="hidden" value="hidden">
-	</div>
-
-</div>
-</form>
+                    <div class="edit input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon2">
+                            <i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="请输入密码"/>
+                    </div>
+                     <div class="edit input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon3">
+                            <i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" class="form-control" id="confirm" name="confirm" placeholder="请再输入一次密码"/>
+                    </div>
+                    <div class="edit input-group input-group-md">
+                        <span class="input-group-addon" id="sizing-addon4">
+                            <i class="glyphicon glyphicon-envelope"></i></span>
+                        <input type="email" class="form-control" id="email" name="useremail" placeholder="请输入邮箱"/>
+                    </div>
+                    <div class="edit input-group input-group-md">
+                        <table><tr>
+                        	<td><input type="text" class="form-control" id="code" name="code" placeholder="请输入验证码"/></td>
+                        	<td><img class="col-md-offset-3" title="看不清" src="img.php" onclick="this.src='img.php?'+Math.random()" style="cursor: pointer;"></td>
+                        </tr></table>
+                    </div>
+                    <br/>
+                    <button class="btn btn-success btn-block" name="submit" onclick="checkk()" >立即注册</button>
+                    <div>
+						<input type="hidden" name="hidden" value="hidden">
+					</div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
+

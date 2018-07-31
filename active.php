@@ -12,15 +12,14 @@
 	$num=mysqli_num_rows($query);
 	if($num){ 
 		$row = mysqli_fetch_array($query); 
-	    if($nowtime>$row['token_time']){ //24hour 
+	    if($nowtime>$row['token_time']){ //激活码有效期24小时内激活有效，重新发送邮件时记得修改
 	        echo "您的激活有效期已过，请登录您的帐号重新发送激活邮件."; 
 	    }else{ 
-	        mysqli_query($conn, "update user set status=1 where id=".$row['id']); 
-	        // if(mysqli_affected_rows($conn)!=1) die(0);         
+	        mysqli_query($conn, "update user set status=1 where id=".$row['id']);       
 	        echo "<script>alert('激活成功！');window.location.href='login.php';</script>";
 	    } 
 	}else{ 
-	    echo "验证失败";     
+	    echo "验证失败，已失效";     
 	} 
 mysqli_close($conn);
 ?>

@@ -29,10 +29,10 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		$num=mysqli_num_rows($result);//统计执行结果影响行数
 		if($num){//用户名密码匹配成功	
 			$row=mysqli_fetch_array($result);
-			if ($row['status']==1) {	
+			if ($row['status']==1) {//状态码为1，已经激活成功	
 				$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
 				echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
-			}else{//状态码为0
+			}else{//状态码为0，还未激活
 				$result= mysqli_query($conn, "select id,token_time from user where status='0' and username='$user' ");
 				$row = mysqli_fetch_array($result); 
 				$nowtime=time();
@@ -42,11 +42,10 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 					// mysqli_query($conn, "delete from user where id=".$row['id']); 
 					// echo "<script>alert('账号不存在,请重新注册');history.go(-1);</script>";
 					// 需要重新发送邮件
-					echo "<a href='email_api.php?id=".$row['id']."' >点击重新激活</a>";
-					
-					
+					echo "<a href='email_api.php?id=".$row['id']."' >您还未激活，点击重新激活</a>";
+								
 				}else
-					echo "<script>alert('未激活成功,请前往邮箱激活');history.go(-1);</script>";					
+					echo "<script>alert('未激活成功，请前往邮箱激活，24小时有效');history.go(-1);</script>";					
 			}
 
 
