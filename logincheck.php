@@ -23,16 +23,21 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		}
 		mysqli_set_charset($conn,"utf8");
 		//$sql="select username,userpwd from user where username='".$user."' and userpwd='".$pwd."'";
-		$sql="select username,userpwd,status from user where username='$user' and userpwd='$pwd' ";
+		$sql="select * from user where username='$user' and userpwd='$pwd' ";
 
 		$result=mysqli_query($conn,$sql);
 		$num=mysqli_num_rows($result);//统计执行结果影响行数
 		if($num){//用户名密码匹配成功	
 			$row=mysqli_fetch_array($result);
 			if ($row['status']==1) {//状态码为1，已经激活成功	
-				$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
-				echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
-			}else{//状态码为0，还未激活
+				if($row['admit']==1){//admit为1，表示审核通过
+					$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
+					echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
+				}
+				else
+					echo "<script>alert('管理员未审核');window.location.href='login.php';</script>";
+			}
+			else{//状态码为0，还未激活
 				$result= mysqli_query($conn, "select id,token_time from user where status='0' and username='$user' ");
 				$row = mysqli_fetch_array($result); 
 				$nowtime=time();

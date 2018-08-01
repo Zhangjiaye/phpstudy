@@ -11,7 +11,7 @@
 	session_start();
 	
 	if(!isset($_SESSION["admin"]))
-		echo "<script>alert('超时请重新登录');window.location.href='login.php';</script>";
+		echo "<script>alert('您还未登录');window.location.href='login.php';</script>";
 	else{
 		$admin=$_SESSION["admin"];
 		// $time=date("Y-m-d");

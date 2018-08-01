@@ -2,7 +2,7 @@
 <html lang="en" xmlns:margin-top="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>登录页面</title>
+    <title>管理员登录页面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 引入 Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +11,8 @@
             height: 100%;
         }
         body{
-            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533045642754&di=857a645e8d5ac535ded332f8bcd23505&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2Fattachments2%2Fday_110730%2F110730052762634909e8fb37d2.jpg);
+            /*background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533045642754&di=857a645e8d5ac535ded332f8bcd23505&imgtype=0&src=http%3A%2F%2Fattachments.gfan.com%2Fforum%2Fattachments2%2Fday_110730%2F110730052762634909e8fb37d2.jpg);*/
+            background: skyblue;
             background-repeat: no-repeat;
             background-size: 100% 100%;
             height: 100%;
@@ -59,21 +60,21 @@
  <div class="container">
         <div class="row row-centered">
             <div class="col-xs-6 col-md-4 col-center-block">
-                <h1 class="textcolor">欢迎登录</h1>
-                <form action="logincheck.php" method="post" name="myform">
+                <h1 class="textcolor">管理员登录</h1>
+                <form action="admincheck.php" method="post" name="myform">
 
 
                     <div class="input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon1">
                             <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
                         </span>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="请输入管理员用户名"/>
                     </div>
 
                     <div class="edit input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon2">
                             <i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="请输入密码"/>
+                        <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="请输入管理员密码"/>
                     </div>
                     
                     
@@ -85,10 +86,8 @@
                     </div>
                     <br/>
 
-                    <button class="btn btn-success btn-block" name="submit" onclick="checkn()" >立即登录</button>
-					<a class="" href="register.php">注册</a>
-					<a class="col-md-offset-1 " href="checkuser.php">忘记密码</a>
-					<a class="col-md-offset-1 " href="adminlogin.php">管理员登录</a>
+                    <button class="btn btn-success btn-block" name="submit" onclick="checkn()" >管理员登录</button>
+
                     <div>
 						<input type="hidden" name="hidden" value="hidden">
 					</div>
