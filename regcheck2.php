@@ -18,7 +18,7 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 	else{
 		if ($pwd==$pwd_confirm) {
 			$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-			//$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
+			// $conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
 			if (mysqli_connect_errno($conn)){
 	    		echo "数据库连接失败: " . mysqli_connect_error();
 	    		exit();
@@ -35,7 +35,7 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				$token=md5($user.$pwd.$regtime);//创建用于激活码识别$token即构造好的激活识别码，它是由用户名、密码和当前时间组成并md5加密得来的。
 				$token_time=time()+60*60*24;
 				
-				$sql_insert="insert into user (username,userpwd,email,token,token_time,regtime) values('".$user."','".$pwd."','".$email."','".$token."','".$token_time."','".$regtime."')";
+				$sql_insert="insert into user(username,userpwd,email,token,token_time,regtime,status,admit) values('".$user."','".$pwd."','".$email."','".$token."',".$token_time.",".$regtime.",0,0)";
 				$res_insert=mysqli_query($conn,$sql_insert);
 				if($res_insert){
 					// echo "<script>alert('注册成功');window.location.href='login.php'</script>";
@@ -43,7 +43,6 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 					// 引入PHPMailer的核心文件
 					require_once("PHPMailer/class.phpmailer.php");
 					require_once("PHPMailer/class.smtp.php");
-
 					// 实例化PHPMailer核心类
 					$mail = new PHPMailer();
 					// 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
@@ -89,7 +88,6 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 					// $mail->addAttachment('./example.pdf');
 					// 发送邮件 返回状态
 					$rs = $mail->send();
-
 				    if($rs==1){
 				        echo "恭喜您，注册申请成功！<br/>请登录到您的邮箱及时激活您的帐号！";  
 				        echo "<a href='login.php'>返回登录</a>"; 
@@ -98,7 +96,6 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				        echo "发送失败";     
 				    } 
 				    			
-
 				}
 				else
 					echo "<script>alert('注册失败,请稍后尝试');history.go(-1);</script>";
@@ -113,5 +110,4 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 else{
 	echo "<script>alert('未提交成功');history.go(-1);</script>";
 }
-
 ?>

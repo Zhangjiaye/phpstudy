@@ -1,6 +1,6 @@
 <?php
 	 header("Content-type:text/html;charset=utf-8");    //设置编码
-	 //$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
+	 // $conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
 	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
 	if (!$conn) {
 	    die("Connection failed: " . mysqli_connect_error());

@@ -53,6 +53,7 @@
 				return false;
 			}
 		}
+
 	</script>
 	
 </head>
@@ -61,7 +62,7 @@
         <div class="row row-centered">
             <div class="col-xs-6 col-md-4 col-center-block">
                 <h1 class="textcolor">管理员登录</h1>
-                <form action="admincheck.php" method="post" name="myform">
+                <form action="admincheck.php" method="post" name="myform" id="myform">
 
 
                     <div class="input-group input-group-md">
