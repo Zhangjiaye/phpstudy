@@ -2,14 +2,7 @@
 session_start();
 header("Content-type:text/html;charset=utf-8");    //设置编码
 if (isset($_SESSION['type'])&&$_SESSION['type']=='管理员') {
-$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	//$conn=mysqli_connect("localhost","root","root","userdb");
-	if (mysqli_connect_errno($conn)){
-	    	echo "数据库连接失败: " . mysqli_connect_error();
-	    	exit();
-	}
-	mysqli_set_charset($conn,"utf8");
-
+	include("connect.php");
 	$id=$_GET['x'];
 	$sql="select * from user where id='$id'";
 	$result=mysqli_query($conn,$sql);
@@ -19,10 +12,10 @@ $conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794")
 		if($row['admit']==0){
 			$sql="update user set admit=1 where id='$id' ";
 			mysqli_query($conn,$sql);
-			echo "<script>alert('审核成功！');window.location.href='admincheck.php';</script>";
+			echo "<script>alert('审核成功！');window.location.href='2-1.php';</script>";
 		}
 		else
-			echo "<script>alert('已审核，请勿重复操作！');window.location.href='admincheck.php';</script>";
+			echo "<script>alert('已审核，请勿重复操作！');window.location.href='2-1.php';</script>";
 
 	}
 

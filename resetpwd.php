@@ -14,13 +14,7 @@ if($user ==""||$email==""){
 	echo "<script>history.go(-1);</script>";
 }
 else{
-		$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-		//$conn=mysqli_connect("localhost","root","root","userdb");//连接数据库
-		if (mysqli_connect_errno($conn)){
-			echo "数据库连接失败: " . mysqli_connect_error();
-			exit();
-			}
-			mysqli_set_charset($conn,"utf8");
+		include("connect.php");
 			$query = mysqli_query($conn, "select token from user where username='".$user."' and email='".$email."' "); 
 			$num=mysqli_num_rows($query);
 			if($num){

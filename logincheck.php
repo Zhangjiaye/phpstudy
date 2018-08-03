@@ -15,13 +15,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		echo "<script>alert('验证码不正确');history.go(-1);</script>";
 	}//当用户名密码验证码不为空，则可以连接数据库//判断输入是否与数据库内的相同
 	else {
-		$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-		//$conn=mysqli_connect("localhost","root","root","userdb");
-		if (mysqli_connect_errno($conn)){
-	    		echo "数据库连接失败: " . mysqli_connect_error();
-	    		exit();
-		}
-		mysqli_set_charset($conn,"utf8");
+		include("connect.php");
 		//$sql="select username,userpwd from user where username='".$user."' and userpwd='".$pwd."'";
 		$sql="select * from user where username='$user' and userpwd='$pwd' ";
 
@@ -29,7 +23,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		$num=mysqli_num_rows($result);//统计执行结果影响行数
 		if($num){//用户名密码匹配成功	
 			$row=mysqli_fetch_array($result);
-			if ($row['status']==1) {//状态码为1，已经激活成功	
+			if ($row['status']=='是') {//状态码为1，已经激活成功	
 				if($row['admit']==1){//admit为1，表示审核通过
 					$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
 					echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
@@ -38,7 +32,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 					echo "<script>alert('管理员未审核');window.location.href='login.php';</script>";
 			}
 			else{//状态码为0，还未激活
-				$result= mysqli_query($conn, "select id,token_time from user where status='0' and username='$user' ");
+				$result= mysqli_query($conn, "select id,token_time from user where status='否' and username='$user' ");
 				$row = mysqli_fetch_array($result); 
 				$nowtime=time();
 				// echo "<script>alert('$nowtime:".$row['token_time']."');</script>";	

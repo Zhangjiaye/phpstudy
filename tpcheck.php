@@ -1,13 +1,7 @@
 <?php
 	header("Content-type:text/html;charset=utf-8");    //设置编码
 	ini_set('date.timezone','Asia/Shanghai'); //设置时区
-	mysqli_set_charset($conn,"utf8");
-	//$conn=mysqli_connect("localhost","root","root","userdb");// 创建连接	
-	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	 // 检测连接
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}	
+	include("connect.php");
 	session_start();
 	
 	if(!isset($_SESSION["admin"]))
@@ -72,11 +66,7 @@
 	}
 
 function chaxun($sql){
-	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	//$conn=mysqli_connect("localhost","root","root","userdb");
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
+	include("connect.php");
 	$result=mysqli_query($conn,$sql);
 	$num=mysqli_num_rows($result);//统计执行结果影响行数
 
@@ -90,11 +80,7 @@ function chaxun($sql){
 	
 function updatemtp(){
 	//往各个选项中存储票数
-	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	//$conn=mysqli_connect("localhost","root","root","userdb");
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
+	include("connect.php");
 	if (isset($_POST['RadioGroup'])) {//如果单选框被选中
 		$circle = $_POST['RadioGroup'];//那么输出的是<input>标签value的值	
 		switch ($circle) {
@@ -135,11 +121,7 @@ mysqli_close($conn);
 	</div>
 		<table class="table">
 			<?php
-				$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-				//$conn=mysqli_connect("localhost","root","root","userdb");
-				if (!$conn) {
-				    die("Connection failed: " . mysqli_connect_error());
-				}
+				include("connect.php");
 				$sql1="select amount from mytoupiao where choose like'%1'";
 				$result1=mysqli_query($conn,$sql1);
 				$row1=mysqli_fetch_array($result1);

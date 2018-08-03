@@ -1,11 +1,7 @@
 <?php
 	ini_set('date.timezone','Asia/Shanghai'); //设置时区
 	$id=$_GET['id'];
-	$conn=mysqli_connect("127.0.0.1","zjwdb_6241794","Zjy805950770","zjwdb_6241794");// 创建连接
-	//$conn=mysqli_connect("localhost","root","root","userdb");
-	if (!$conn) {
-	    die("Connection failed: " . mysqli_connect_error());
-	}
+	include("connect.php");
 	$sql="select username,email,token from user where id='$id' ";
 	$r=mysqli_query($conn,$sql);
 	$num=mysqli_num_rows($r);
