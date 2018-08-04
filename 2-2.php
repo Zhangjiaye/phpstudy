@@ -5,33 +5,9 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>后台管理系统</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<?php
+ include("header.html");
+ ?>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -121,7 +97,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">。。。</a></li>
+            <li><a href="3-1.php">投票结果</a></li>
             <li><a href="#">。。。</a></li>
           </ul>
         </li>
@@ -139,7 +115,6 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
        密码重置
         <!-- <small>欢迎打开后台界面</small> -->
       </h1>
-    
     </section>
 
     <!-- Main content -->
@@ -186,14 +161,13 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
     }
   echo "</table>";
   
-  echo '<a href="2-1.php?page_number=1">首页</a>  ';
+  echo '<a href="2-2.php?page_number=1">首页</a>  ';
     // for($i=1;$i<=2;$i++){
     //  echo '<a href="2-1.php?page_number='.$i.'">第'.$i.'页</a>  '; 
     // }
-    echo '<a href="2-1.php?page_number='.($current_page_number-1).'">上一页</a>  ';
-    echo '<a href="2-1.php?page_number='.($current_page_number+1).'">下一页</a>  ';
-    echo '<a href="2-1.php?page_number='.($total_pages).'">尾页</a>  ';
-
+    echo '<a href="2-2.php?page_number='.($current_page_number-1).'">上一页</a>  ';
+    echo '<a href="2-2.php?page_number='.($current_page_number+1).'">下一页</a>  ';
+    echo '<a href="2-2.php?page_number='.($total_pages).'">尾页</a>  ';
   mysqli_close($conn);
   }else{
     echo "<script>alert('请重新登陆');window.location.href='adminlogin.php';</script>";
@@ -201,17 +175,10 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
 ?>
 
 </table>
+</section>
+</div>
 
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
   <footer class="main-footer">
-   
-    <!-- Default to the left -->
     <strong>Copyright &copy; 2018 <a href="#">Company</a>.</strong> All rights reserved.
   </footer>
 

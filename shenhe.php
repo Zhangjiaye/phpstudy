@@ -12,16 +12,19 @@ if (isset($_SESSION['type'])&&$_SESSION['type']=='管理员') {
 		if($row['admit']==0){
 			$sql="update user set admit=1 where id='$id' ";
 			mysqli_query($conn,$sql);
-			echo "<script>alert('审核成功！');window.location.href='2-1.php';</script>";
+			// echo "<script>alert('审核成功！');window.location.href='2-1.php';</script>";
+			echo "审核成功";
 		}
 		else
-			echo "<script>alert('已审核，请勿重复操作！');window.location.href='2-1.php';</script>";
+			echo "已审核，请勿重复操作";
+			// echo "<script>alert('已审核，请勿重复操作！');window.location.href='2-1.php';</script>";
 
 	}
 
 }
 else
-	echo "<script>alert('无权限，重新登录！');window.location.href='login.php';</script>";
+	echo "无权限，重新登录！";
+	// echo "<script>alert('无权限，重新登录！');window.location.href='login.php';</script>";
 	
 	
 	

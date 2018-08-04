@@ -81,26 +81,32 @@ function chaxun($sql){
 function updatemtp(){
 	//往各个选项中存储票数
 	include("connect.php");
+	$admin=$_SESSION["admin"];
+	$today=date("Y-m-d");
 	if (isset($_POST['RadioGroup'])) {//如果单选框被选中
 		$circle = $_POST['RadioGroup'];//那么输出的是<input>标签value的值	
-		switch ($circle) {
-				case '选项1':
-					//$sql="update mytoupiao set amount=amount+1 where choose ='选项1'";
-					$sql="update mytoupiao set amount=amount+1 where choose like'%1'";				
-					mysqli_query($conn,$sql);//mysqli_query() 函数执行某个针对数据库的查询。
-					break;
-				case '选项2':
-					$sql="update mytoupiao set amount=amount+1 where choose like'%2'";
-					mysqli_query($conn,$sql);
-					break;
-				case '选项3':
-					$sql="update mytoupiao set amount=amount+1 where choose like'%3'";	
-					mysqli_query($conn,$sql);
-					break;
-				default:
-					# code...
-					break;
-		}	
+		// switch ($circle) {
+		// 		case '选项1':
+		// 			$sql="update mytoupiao set amount=amount+1 where choose ='选项1'";
+		// 			// $sql="update mytoupiao set amount=amount+1 where choose like'%1'";				
+		// 			mysqli_query($conn,$sql);//mysqli_query() 函数执行某个针对数据库的查询。
+		// 			break;
+		// 		case '选项2':
+		// 			$sql="update mytoupiao set amount=amount+1 where choose like'%2'";
+		// 			mysqli_query($conn,$sql);				
+		// 			break;
+		// 		case '选项3':
+		// 			$sql="update mytoupiao set amount=amount+1 where choose like'%3'";	
+		// 			mysqli_query($conn,$sql);				
+		// 			break;
+		// 		default:
+		// 			# code...
+		// 			break;
+		// }	
+			$sql="update mytoupiao set amount=amount+1 where choose ='$circle' ";
+			mysqli_query($conn,$sql);	
+			$sql="insert into tp(username,choose,ttime) values ('$admin','$circle','$today')";
+			mysqli_query($conn,$sql);
 	}
 	mysqli_close($conn);
 }
