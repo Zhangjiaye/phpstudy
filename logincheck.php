@@ -26,7 +26,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 			if ($row['status']=='是') {//状态码为1，已经激活成功	
 				if($row['admit']=='是'){//admit为1，表示审核通过
 					$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
-					echo "<script>alert('登陆成功');window.location.href='voteindex.php';</script>";
+					echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
 				}
 				else
 					echo "<script>alert('管理员未审核');window.location.href='login.php';</script>";
