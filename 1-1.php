@@ -120,7 +120,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
           </a>
           <ul class="treeview-menu">
             <li><a href="3-1.php">投票结果</a></li>
-            <li><a href="#">。。。</a></li>
+            <li><a href="3-2.php">投票发布审核</a></li>
           </ul>
         </li>
       </ul>
@@ -145,8 +145,8 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
          <div class="container">
            <div class="row row-centered ">
              <div class="col-xs-6 col-md-4 col-center-block">
-             <form action="1-1check.php" method="post" name="myform">
-                   
+             <form action="1-1check.php" method="post" name="myform" class="panel panel-default">
+                   <div class="panel-body">
                     <div class="edit input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon2">
                             <i class="glyphicon glyphicon-lock"></i></span>
@@ -169,6 +169,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
                     <div>
                    <input type="hidden" name="hidden" value="hidden">
                  </div>
+               </div>
             </form>
          </div>
         </div>

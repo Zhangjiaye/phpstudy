@@ -13,7 +13,7 @@ include("connect.php");
 	if($num){//匹配成功	
 		$sql="update user set userpwd=md5(123) where id='$id' ";
 		$result=mysqli_query($conn,$sql);
-		echo "<script>alert('密码重置成功！');window.location.href='2-2.php';</script>";
+		echo "<script>alert('密码重置成功，默认为123！');window.location.href='2-2.php';</script>";
 	}
 
 }

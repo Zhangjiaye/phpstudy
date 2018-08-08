@@ -24,9 +24,9 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		if($num){//用户名密码匹配成功	
 			$row=mysqli_fetch_array($result);
 			if ($row['status']=='是') {//状态码为1，已经激活成功	
-				if($row['admit']==1){//admit为1，表示审核通过
+				if($row['admit']=='是'){//admit为1，表示审核通过
 					$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
-					echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
+					echo "<script>alert('登陆成功');window.location.href='voteindex.php';</script>";
 				}
 				else
 					echo "<script>alert('管理员未审核');window.location.href='login.php';</script>";

@@ -41,19 +41,18 @@
 				myform.username.focus();
 				return false;
 			}
-			else if (myform.userpwd.value=="") {
+			if (myform.userpwd.value=="") {
 				alert("请输入密码");
-				myform.username.focus();
+				myform.userpwd.focus();
 				return false;
 			}
-			else if (myform.code.value=="") {
+			if (myform.code.value=="") {
 				alert("请输入验证码");
-				myform.username.focus();
+				myform.code.focus();
 				return false;
 			}
 		}
-	</script>
-	
+	</script>	
 </head>
 <body>
  <div class="container">
@@ -61,22 +60,17 @@
             <div class="col-xs-6 col-md-4 col-center-block">
                 <h1 class="textcolor">欢迎登录</h1>
                 <form action="logincheck.php" method="post" name="myform">
-
-
                     <div class="input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon1">
                             <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
                         </span>
                         <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
                     </div>
-
                     <div class="edit input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon2">
                             <i class="glyphicon glyphicon-lock"></i></span>
                         <input type="password" class="form-control" id="userpwd" name="userpwd" placeholder="请输入密码"/>
-                    </div>
-                    
-                    
+                    </div>                                  
                     <div class="edit input-group input-group-md">
                         <table><tr>
                         	<td><input type="text" class="form-control" id="code" name="code" placeholder="请输入验证码"/></td>
@@ -84,7 +78,6 @@
                         </tr></table>
                     </div>
                     <br/>
-
                     <button class="btn btn-success btn-block" name="submit" onclick="checkn()" >立即登录</button>
 					<a class="" href="register.php">注册</a>
 					<a class="col-md-offset-1 " href="checkuser.php">忘记密码</a>
@@ -96,9 +89,5 @@
             </div>
         </div>
     </div>
-
-
-
-
 </body>
 </html>

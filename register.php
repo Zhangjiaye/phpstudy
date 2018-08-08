@@ -38,12 +38,9 @@
     </style>
     <script type="text/javascript">
 		function checkk(){
-
-				var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
-    			var obj = document.getElementById("email"); //要验证的对象
-
-
-			if (myform.username.value=="") {
+			var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+    		var obj = document.getElementById("email"); //要验证的对象
+			if (document.myform.username.value=="") {
 				alert("请输入用户名");
 				myform.username.focus();
 				return false;
@@ -58,9 +55,9 @@
 				myform.confirm.focus();
 				return false;
 			}
-			if (myform.email.value=="") {
+			if (myform.useremail.value=="") {
 				alert("请输入邮箱");
-				myform.email.focus();
+				myform.useremail.focus();
 				return false;
 			}else if(!reg.test(obj.value)){//test() 方法用于检测一个字符串是否匹配某个模式.
 				alert('邮箱格式错误');
@@ -75,21 +72,17 @@
 	</script>
 </head>
 <body>
-
     <div class="container">
         <div class="row row-centered">
             <div class="col-xs-6 col-md-4 col-center-block">
                 <h1 class="textcolor">欢迎注册</h1>
                 <form action="regcheck2.php" method="post" name="myform">
-
-
                     <div class="input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon1">
                             <i class="glyphicon glyphicon-user" aria-hidden="true"></i>
                         </span>
                         <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名"/>
                     </div>
-
                     <div class="edit input-group input-group-md">
                         <span class="input-group-addon" id="sizing-addon2">
                             <i class="glyphicon glyphicon-lock"></i></span>

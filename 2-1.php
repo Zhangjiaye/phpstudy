@@ -95,7 +95,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
           </a>
           <ul class="treeview-menu">
             <li><a href="3-1.php">投票结果</a></li>
-            <li><a href="#">。。。</a></li>
+            <li><a href="3-2.php">投票发布审核</a></li>
           </ul>
         </li>
       </ul>
@@ -189,7 +189,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
         function(result,status){
             if (status=='success') {
               alert(result);
-              $(node).parent().prev().text("1");
+              $(node).parent().prev().text("是");
             }else{
               alert('请求失败');
             }

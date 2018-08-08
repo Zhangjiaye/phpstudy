@@ -29,7 +29,7 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				$token=md5($user.$pwd.$regtime);//创建用于激活码识别$token即构造好的激活识别码，它是由用户名、密码和当前时间组成并md5加密得来的。
 				$token_time=time()+60*60*24;
 				
-				$sql_insert="insert into user(username,userpwd,email,token,token_time,regtime,status,admit) values('".$user."','".$pwd."','".$email."','".$token."',".$token_time.",".$regtime.",'否',0)";
+				$sql_insert="insert into user(username,userpwd,email,token,token_time,regtime,status,admit) values('".$user."','".$pwd."','".$email."','".$token."',".$token_time.",".$regtime.",'否','否')";
 				$res_insert=mysqli_query($conn,$sql_insert);
 				if($res_insert){
 					// echo "<script>alert('注册成功');window.location.href='login.php'</script>";
@@ -88,8 +88,7 @@ if (isset($_POST["hidden"])&&$_POST["hidden"]=="hidden") {
 				    }
 				    else{ 
 				        echo "发送失败";     
-				    } 
-				    			
+				    } 			    			
 				}
 				else
 					echo "<script>alert('注册失败,请稍后尝试');history.go(-1);</script>";

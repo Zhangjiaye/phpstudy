@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新增投票</title>
+</head>
+ 
+<body>
+	<h1>增加投票</h1>
+	<button onclick="createbtn()">增加选项</button> <button onclick="delbtn()">删除选项</button>
+	<!--onsubmit属性是为了下面脚本能够顺利弹出确认框，用户确认之后才提交这个表单-->
+	<form action="creatvote.php" method="post" onsubmit="return check()" enctype="multipart/form-data">
+	<!--这里定义div的id是为了下面的javascript的操作，而且div不像p那样会参加很大的行距-->
+	<div id="createform">
+		<div>
+			投票主题：<input type="text" name="title" style = "width:50%"/>
+		</div>
+		<div>
+			投票描述：<input type="text" name="text" style = "width:50%"/>
+		</div>
+		<div>
+	       选项1：<input type="text" name="opt1" style = "width:20%"/>
+	       <input type="file" name="myfile[]" />       
+	    </div>
+	            
+	    <div>
+	       选项2：<input type="text" name="opt2" style = "width:20%"/>
+	       <input type="file" name="myfile[]"  /> 
+	    </div>
+	                
+	</div>
+	<!--这里是用来记录有多少个选项的-->
+	<input type="hidden" id="nodetotal" name="nodetotal" />
+	<input type="submit" value="提交" />
+	</form>
+	<a href="voteindex.php">返回</a>
+</body>
+</html>
+ 
+<script>
+//脚本部分，是现实的关键
+//开始先记录当前的选项数是2，并存入hidden域，到时候随表单一起提交
+var nodenum=2;
+document.getElementById("nodetotal").value=nodenum;
+//下面是“增加选项”“删除选项”的按钮操作
+function createbtn(){
+ //如果选项少于10个才操作
+ if(nodenum<10){
+ nodenum++;
+ var node=document.createElement("div");
+ //操作节点如果涉及html文本，写成单引号就不用写\"这么难看的双引号的转义字符
+ node.innerHTML="选项"+nodenum+"：<input type='text' name='opt"+nodenum+"' style='width:20%' />"+"<input type='file' name='myfile[]' /> ";
+ 
+ document.getElementById("createform").appendChild(node);
+ //记得增加完每个节点，要更新以下hidden域里面的节点数哦！
+ document.getElementById("nodetotal").value=nodenum;
+ }
+ else{
+ alert("最多10个选项");
+ }
+}
+//逻辑跟上面一样
+function delbtn(){
+	 if(nodenum>2){
+	 nodenum--;
+	 d=document.getElementById("createform");
+	 d.removeChild(d.lastChild);
+	 document.getElementById("nodetotal").value=nodenum;
+	 }
+	 else{
+	 alert("至少2个选项");
+	 }
+}
+//表单确认框的脚本，表单onsubmit为true才能够提交，confirm点确定则返回true反之为false
+function check(){
+ 	return confirm("确定提交？");
+}
+</script>

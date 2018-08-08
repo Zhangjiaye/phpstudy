@@ -9,8 +9,8 @@ if (isset($_SESSION['type'])&&$_SESSION['type']=='管理员') {
 	$num=mysqli_num_rows($result);//统计执行结果影响行数
 	if($num){//匹配成功	
 		$row = mysqli_fetch_array($result); 
-		if($row['admit']==0){
-			$sql="update user set admit=1 where id='$id' ";
+		if($row['admit']=='否'){
+			$sql="update user set admit='是' where id='$id' ";
 			mysqli_query($conn,$sql);
 			// echo "<script>alert('审核成功！');window.location.href='2-1.php';</script>";
 			echo "审核成功";
