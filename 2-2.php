@@ -152,7 +152,7 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
    for($i=0;$i<$num;$i++){
         $row =  mysqli_fetch_array($result);
         $id = $row['id'];
-        $name = $row['username'];
+        $name = htmlentities($row['username']);
         $status=$row['status'];
         $time=date('Y-m-d',$row['regtime']);
         $admit = $row['admit'];

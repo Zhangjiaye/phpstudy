@@ -137,17 +137,18 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
           $sql = "select * from voteparent limit $begin_position,$page_size";
           //select * from table limit m,n其中m是指记录开始的index，从0开始，表示第一条记录n是指从第m+1条开始，取n条。
           $result = mysqli_query($conn,$sql);
+          $num=mysqli_num_rows($result);
           echo "<table class='table table-bordered table-hover'>";
           echo "<tr><th>编号</th><th>用户</th><th>主题</th><th>描述</th><th>是否审核</th><th>投票审核</th></tr>";
-          $num=mysqli_num_rows($result);
+          
           //循环遍历出数据表中的数据
           for($i=0;$i<$num;$i++){
               $row =  mysqli_fetch_array($result);
               $id = $row['id'];
-              $puser=$row['puser'];
+              $puser = $row['puser'];
               $title = $row['title'];
               $ptext = $row['ptext'];
-              $shenhe=$row['shenhe'];
+              $shenhe= $row['shenhe'];
               // $time=$row['ttime'];
               echo "<tr><td>$id</td><td>$puser</td><td>$title</td><td>$ptext</td><td>$shenhe</td><td>"; 
               echo "<a href='3-2check.php?x=".$row['id']."'>审核</a></td><tr>";

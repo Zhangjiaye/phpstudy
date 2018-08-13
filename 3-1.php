@@ -144,9 +144,9 @@ ini_set('date.timezone','Asia/Shanghai'); //设置时区
           for($i=0;$i<$num;$i++){
               $row =  mysqli_fetch_array($result);
               $id = $row['id'];
-              $name = $row['username'];
-              $choose = $row['choose'];
-              $time=$row['ttime'];
+              $name = htmlentities($row['username']);
+              $choose = htmlentities($row['choose']);
+              $time=htmlentities($row['ttime']);
               echo "<tr><td>$id</td><td>$name</td><td>$choose</td><td>$time</td><tr>"; 
           }
             echo "</table>";   

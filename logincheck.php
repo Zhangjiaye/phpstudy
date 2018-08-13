@@ -4,8 +4,9 @@ session_start();
 header("Content-type:text/html;charset=utf-8");    //设置编码
 ini_set('date.timezone','Asia/Shanghai'); //设置时区
 if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
+include("connect.php");
 	//加入用户名密码
-	$user=trim($_POST["username"]);//移除字符串两侧空格
+	$user=mysqli_real_escape_string($conn,trim($_POST["username"]));//移除字符串两侧空格
 	$pwd=md5(trim($_POST["userpwd"]));
 	$code=trim($_POST["code"]);
 	if ($user ==""||$pwd==""||$code=="") {
@@ -15,7 +16,11 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 		echo "<script>alert('验证码不正确');history.go(-1);</script>";
 	}//当用户名密码验证码不为空，则可以连接数据库//判断输入是否与数据库内的相同
 	else {
-		include("connect.php");
+		// session_unset($_SESSION);
+		unset($_SESSION["admin"]);
+		unset($_SESSION["type"]);
+		unset($_SESSION["id"]);
+		
 		//$sql="select username,userpwd from user where username='".$user."' and userpwd='".$pwd."'";
 		$sql="select * from user where username='$user' and userpwd='$pwd' ";
 
@@ -26,7 +31,7 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
 			if ($row['status']=='是') {//状态码为1，已经激活成功	
 				if($row['admit']=='是'){//admit为1，表示审核通过
 					$_SESSION["admin"]=$user;//登录成功时把用户名放到session中
-					echo "<script>alert('登陆成功');window.location.href='index.html';</script>";
+					echo "<script>alert('登陆成功');window.location.href='voteindex.php';</script>";
 				}
 				else
 					echo "<script>alert('管理员未审核');window.location.href='login.php';</script>";

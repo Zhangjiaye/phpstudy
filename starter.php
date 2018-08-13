@@ -137,6 +137,10 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
     else {
        include("connect.php");
     // echo "<script>alert('$pwd');</script>";
+    unset($_SESSION["admin"]);
+    unset($_SESSION["type"]);
+    unset($_SESSION["id"]);
+
     $sql="select * from admin where username='".$user."' and userpwd='".$pwd."' ";
     $result=mysqli_query($conn,$sql);
     $num=mysqli_num_rows($result);//统计执行结果影响行数
@@ -144,7 +148,6 @@ if(isset($_POST["hidden"])&&$_POST["hidden"]=="hidden"){
       $rowx =  mysqli_fetch_array($result);
       $_SESSION['id']=$rowx['id'];
       $_SESSION['type']='管理员';
-
     }
     else
       echo "<script>alert('账号或密码错误');history.go(-1);</script>";
